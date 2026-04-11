@@ -26,7 +26,7 @@ white-space:nowrap;
 .componentTableItem span span div div:nth-child(3){
 display:none;
 }
-.componentTableItem span span div div:nth-child(1) img{
+img[title=Abnormal]{
     width: 14px;
     margin-right: 0.25rem;
 }
@@ -39,44 +39,100 @@ display:none;
     min-width: 8rem;
 }
 
-td.componentTableItemDynamicCell div.custom-abnormal a{
+.custom-abnormal a{
     color:red;
+}
+
+.custom-highlight{
+    background-color: hsl(175.18deg 100% 21.96% / 15%);
+}
+
+.custom-today{
+    background-color:rgba(255, 231, 155, 0.8);
+}
+
+.custom-today{
+position:relative;
+}
+
+.custom-today::after{
+content: "Current";
+opacity: 0.3;
+font-size: 1.5rem;
+position:absolute;
+top:50%;
+transform: translate(0,-50%);
+right:6px;
 }
     `);
 }
 
 function addAbnormalClass(){
-    (new MutationObserver(check)).observe(document, {childList: true, subtree: true});
+    if(document.querySelector('td.componentTableItemDynamicCell')) {
+        // actions to perform after #mySelector is found
+        const containers = document.querySelectorAll('td.componentTableItemDynamicCell div[style*="display: inline-flex"]');
+        containers.forEach(container => {
+            // 1. Find the first child div
+            const firstDiv = container.querySelector('div:nth-child(1)');
+            // 2. Find the second child div
+            const secondDiv = container.querySelector('div:nth-child(2)');
 
-    function check(changes, observer) {
-        if(document.querySelector('td.componentTableItemDynamicCell')) {
-            // observer.disconnect();
-            // actions to perform after #mySelector is found
-            const containers = document.querySelectorAll('td.componentTableItemDynamicCell div[style*="display: inline-flex"]');
-            containers.forEach(container => {
-                // 1. Find the first child div
-                const firstDiv = container.querySelector('div:nth-child(1)');
-                // 2. Find the second child div
-                const secondDiv = container.querySelector('div:nth-child(2)');
+            if (firstDiv && secondDiv) {
+                // Check if there is an img with title "Abnormal" (case-insensitive check is safer)
+                const hasAbnormalImg = firstDiv.querySelector('img[title="Abnormal"]');
 
-                if (firstDiv && secondDiv) {
-                    // Check if there is an img with title "Abnormal" (case-insensitive check is safer)
-                    const hasAbnormalImg = firstDiv.querySelector('img[title="Abnormal"]');
-
-                    if (hasAbnormalImg) {
-                        secondDiv.classList.add('custom-abnormal');
-                    }
+                if (hasAbnormalImg) {
+                    secondDiv.classList.add('custom-abnormal');
                 }
-            });
-        }
+            }
+        });
     }
+}
+
+function markTodayColumn(){
+    const dateSpan = document.querySelector('#PAPerson_Banner-row-0-item-BANNERPAADMAdmDate');
+    let date = null;
+    if(dateSpan) {
+        date = dateSpan.innerText;
+    }
+
+    const componentTableHeaderWrappers = document.querySelectorAll('div.componentTableHeaderWrapper');
+    componentTableHeaderWrappers.forEach(wrapper =>{
+        const span = wrapper.querySelector("span");
+        if(span.innerText.includes(date)){
+            wrapper.parentNode.classList.add('custom-today');
+        }
+    })
+}
+
+function highlightFrequentlyUsedMenu(){
+    const higlightMenu = ["Observations and Monitoring", "Order DF", "Diagnosis", "Radiology Results",
+                          "Other Investigation","Laboratory Results","Laboratory Cumulative Result"]
+    const menuCaptions = document.querySelectorAll('div.chartMenuItemCaption');
+    menuCaptions.forEach(menuCaption=>{
+        if(higlightMenu.includes(menuCaption.innerText)){
+            // chartMenuSelected chartMenuItemExpanded custom-highlight chartItemHasData
+            if(menuCaption.parentNode.classList.contains("chartMenuSelected")){
+                return;
+            }
+            if(menuCaption.parentNode.classList.contains("chartItemHasData") || menuCaption.innerText==="Diagnosis"){
+                menuCaption.parentNode.classList.add('custom-highlight');
+            }
+        }
+    })
 }
 
 function main(){
     'use strict';
 
     addStyles();
-    addAbnormalClass();
+
+    (new MutationObserver(check)).observe(document, {childList: true, subtree: true});
+    function check(changes, observer) {
+        addAbnormalClass();
+        markTodayColumn();
+        highlightFrequentlyUsedMenu();
+    }
 }
 
 
