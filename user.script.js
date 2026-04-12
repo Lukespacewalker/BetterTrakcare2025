@@ -1,14 +1,14 @@
 // ==UserScript==
-// @name         New Userscript
-// @namespace    http://tampermonkey.net/
-// @version      2026-04-08
+// @name         Better TrakCare 2025
+// @namespace    https://github.com/lukespacewalker
+// @version      1.0-2026-04-12
 // @description  try to take over the world!
+// @copyright    2025, Suttisak Denduangchai (https://github.com/lukespacewalker)
+// @license      MIT
 // @include      https://bhq-tcp-w.bdms.co.th/*
 // @author       Suttisak Denduangchai
-// @match        https://bhq-tcp-w.bdms.co.th/trakcare/live/web/csp/system.Home.cls
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=bdms.co.th
 // @grant        GM_addStyle
-// @run-at      document-idle
 // ==/UserScript==
 
 function addStyles() {
