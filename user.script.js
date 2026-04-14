@@ -1,8 +1,10 @@
 // ==UserScript==
 // @name         Better TrakCare 2025
+// @name:th      Better TrakCare 2025
 // @namespace    https://github.com/lukespacewalker
 // @version      1.1.1-2026-04-14
 // @description  A userscript to enhance the user interface of TrakCare 2025, a healthcare information system, by adding custom styles and functionalities for better user experience.
+// @description:th  สคริปต์ผู้ใช้เพื่อปรับปรุงส่วนติดต่อผู้ใช้ของ TrakCare 2025 ซึ่งเป็นระบบสารสนเทศทางการแพทย์ โดยเพิ่มสไตล์และฟังก์ชันการทำงานที่กำหนดเองเพื่อประสบการณ์ผู้ใช้ที่ดีขึ้น
 // @copyright    2026, Suttisak Denduangchai (https://github.com/lukespacewalker)
 // @license      MIT
 // @include      https://bhq-tcp-w.bdms.co.th/*
