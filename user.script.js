@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Better TrakCare 2025
 // @namespace    https://github.com/lukespacewalker
-// @version      1.1-2026-04-14
+// @version      1.1.1-2026-04-14
 // @description  A userscript to enhance the user interface of TrakCare 2025, a healthcare information system, by adding custom styles and functionalities for better user experience.
 // @copyright    2026, Suttisak Denduangchai (https://github.com/lukespacewalker)
 // @license      MIT
@@ -119,7 +119,7 @@ function addDocscanAndEclinicalButtons(){
 
     const formattedHospitalNumber = hospitalNumber.replace(/-/g, '');
     docscanButton.addEventListener('click', () => {
-        window.open(`https://dscanweb.bdms.co.th/docview?hn=${formattedHospitalNumber}&uid=${userCode}&location=01HPC`, '_blank');
+        window.open(`https://dscanweb.bdms.co.th/main?hn=${formattedHospitalNumber}&uid=${userCode}&location=01HPC`, '_blank');
     });
     buttonsContainer.appendChild(docscanButton);
     // create Eclinical button

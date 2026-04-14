@@ -29,6 +29,9 @@
 
 ## 📋 Changelog
 
+### 🩹 v1.1.1 — 2026-04-14
+- 🐛 Fixed Docscan URL path (`/docview` → `/main`).
+
 ### 🆕 v1.1 — 2026-04-14
 - ➕ Added **Docscan** shortcut button to the patient banner (opens Docscan with pre-filled HN and user credentials).
 - ➕ Added **eClinical** shortcut button to the patient banner (opens eClinical with episode and location context).
@@ -42,7 +45,7 @@
 
 ## 🔖 Current Version
 
-`1.1-2026-04-14`
+`1.1.1-2026-04-14`
 
 ## 📄 License
 
@@ -81,6 +84,9 @@ MIT © 2026 [Suttisak Denduangchai](https://github.com/lukespacewalker)
 
 ## 📋 ประวัติการอัปเดต
 
+### 🩹 v1.1.1 — 14 เมษายน 2569
+- 🐛 แก้ไข URL ของ Docscan (`/docview` → `/main`)
+
 ### 🆕 v1.1 — 14 เมษายน 2569
 - ➕ เพิ่มปุ่ม **Docscan** ในแถบข้อมูลผู้ป่วย (เปิด Docscan พร้อมข้อมูล HN และผู้ใช้งานอัตโนมัติ)
 - ➕ เพิ่มปุ่ม **eClinical** ในแถบข้อมูลผู้ป่วย (เปิด eClinical พร้อมข้อมูล episode และ location)
@@ -94,7 +100,7 @@ MIT © 2026 [Suttisak Denduangchai](https://github.com/lukespacewalker)
 
 ## 🔖 เวอร์ชันปัจจุบัน
 
-`1.1-2026-04-14`
+`1.1.1-2026-04-14`
 
 ## 📄 สัญญาอนุญาต
 
